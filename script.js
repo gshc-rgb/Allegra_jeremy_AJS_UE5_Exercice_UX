@@ -2,6 +2,8 @@
 
 const liste = document.getElementById("liste");
 const bouton = document.getElementById("btn-romant");
+const bouton2 = document.getElementById("btn-retour");
+
 
 function afficherLivres(listeDeLivres) {
   liste.innerHTML = ""; 
@@ -17,6 +19,7 @@ function afficherLivres(listeDeLivres) {
     liste.appendChild(carte);
   }
 }
+ancienneListe = listeDeLivres;
 
 fetch("livres.json")
   .then(function (reponse) {
@@ -39,5 +42,8 @@ fetch("livres.json")
 
     bouton.addEventListener("click", function () {
       afficherLivres(romant);
+    });
+     bouton2.addEventListener("click", function () {
+      afficherLivres(ancienneListe);
     });
   });
