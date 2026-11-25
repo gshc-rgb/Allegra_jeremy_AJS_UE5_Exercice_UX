@@ -4,7 +4,7 @@ const liste = document.getElementById("liste");
 const bouton = document.getElementById("btn-romant");
 const bouton2 = document.getElementById("btn-retour");
 
-
+let ancienneListe = "" ;
 function afficherLivres(listeDeLivres) {
   liste.innerHTML = ""; 
   for (const livre of listeDeLivres) {
@@ -18,15 +18,15 @@ function afficherLivres(listeDeLivres) {
     `;
     liste.appendChild(carte);
   }
+  
 }
-ancienneListe = listeDeLivres;
-
 fetch("livres.json")
-  .then(function (reponse) {
-    return reponse.json();
-  })
-  .then(function (Livres) {
-    console.table(Livres);
+.then(function (reponse) {
+  return reponse.json();
+})
+.then(function (Livres) {
+  console.table(Livres);
+  ancienneListe = Livres;
 
     afficherLivres(Livres);
 
